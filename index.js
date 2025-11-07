@@ -1,19 +1,22 @@
-const express = require('express');
-const mongoose = require('mongoose');
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI;
 
-app.get('/', (req, res) => {
-  res.status(200).send('Hello, World!');
+app.get("/", (req, res) => {
+  res.status(200).send("Hello, World!");
 });
 
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-// MongoDB connection setup
-mongoose.connect('mongodb+srv://moizraza10_db_user:gZ3bHUqyvwDfDC4L@firstmongodb.0d8xzxb.mongodb.net/?appName=FirstMongoDB')
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+// MongoDB connection setup and then calling app.listen
+mongoose
+  .connect(MONGO_URI)
+  .then(() => {
+    console.log("Connected to MongoDB successfully");
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => console.error("MongoDB connection error:", err));

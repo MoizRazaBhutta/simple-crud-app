@@ -8,4 +8,4 @@
 6. After you setup then create a connection string
 7. Use node package for mongodb and get the connection string
 8. We will be connecting the express js with mongoose so npm install that
-9. 
+9. Best practice is to first connect mongodb then listen to the app.
