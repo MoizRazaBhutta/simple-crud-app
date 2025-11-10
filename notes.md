@@ -9,3 +9,21 @@
 7. Use node package for mongodb and get the connection string
 8. We will be connecting the express js with mongoose so npm install that
 9. Best practice is to first connect mongodb then listen to the app.
+10. Create a model and connect it with the mongoose.
+11. Remember in Express JS we can not directly use req.body without middleware
+12. We can have query and req parameter like
+
+```js
+// http://localhost:3000/api/users/42/orders?status=delivered
+
+// Id here is req.params and query parameter is status
+app.get("/api/users/:id/orders", (req, res) => {
+  const userId = req.params.id;
+  const status = req.query.status;
+  res.send(`User: ${userId}, Order Status: ${status}`);
+});
+
+```
+
+13. We use findByIdAndUpdate method to get the item from mongodb and update the particular id
+14. 
