@@ -97,6 +97,25 @@ app.put("/api/product/:id", async (req, res) => {
   }
 });
 
+// Delete By ID
+// URL will be like /api/product/64a7f0c2e1b2c3d4e5f67890 DELETE
+app.delete("/api/product/:id", async (req, res) => {
+  try {
+    const { id: productId } = req.params;
+    // It is similar to MongoDb db.products.deleteOne({_id: ObjectId(id)})
+    const product = await Product.findByIdAndDelete(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    res.status(200).json({
+      message: "Product deleted successfully",
+    });
+  } catch (err) {
+    console.error("Error deleting product by ID:", err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // MongoDB connection setup and then calling app.listen
 mongoose
   .connect(MONGO_URI)
