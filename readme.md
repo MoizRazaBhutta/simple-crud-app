@@ -6,7 +6,7 @@ This is a simple CRUD application built using Express JS and MongoDB.
 
 To install this application, please follow the steps below:
 
-1. Clone the repository by running the command `git clone https://github.com/your-username/crud-express-js.git`
+1. Clone the repository by running the command `git clone https://github.com/MoizRazaBhutta/simple-crud-app.git`
 2. Navigate to the project directory by running the command `cd crud-express-js`
 3. Install the dependencies by running the command `npm install`
 4. Start the application by running the command `npm run dev`
