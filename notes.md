@@ -26,4 +26,19 @@ app.get("/api/users/:id/orders", (req, res) => {
 ```
 
 13. We use findByIdAndUpdate method to get the item from mongodb and update the particular id
-14. 
+14. So basically mongoose.model has these methods for adding deleting updating. Remember these findById, findByIdAndUpdate and findByIdAndDelete
+15. `app.use(express.urlencoded({ extended: false }));` use this middleware to expect formData from client and parse its body.
+16. We can pass something like this 
+
+```HTML
+<form method="POST" action="/login">
+  <input type="text" name="username" />
+  <input type="password" name="password" />
+  <button type="submit">Login</button>
+</form>
+```
+
+17. If you remove the middleware line, req.body will be undefined, because Express doesn’t automatically know how to parse the form data.
+18. So if your frontend sends complex/nested objects (like user[address][city]=Toronto), use { extended: true }.
+19. Content-Type: application/x-www-form-urlencoded this can is dealt with urlencoded ones and Content-Type: application/json are dealt with app.use(express.json())
+20. 

@@ -9,7 +9,7 @@ const Product = require("./models/product.model");
 
 // This middleware is necessary to parse JSON bodies in requests
 app.use(express.json()); // Middleware to parse JSON bodies
-
+app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.status(200).send("Hello, World!");
 });
@@ -40,6 +40,8 @@ app.get("/api/products", async (req, res) => {
   try {
     // It is similar to MongoDb db.products.find({})
     const products = await Product.find({}); // Fetch all products from the database
+    console.log("Fetched products:", products);
+    console.log("Number of products fetched:", products.length);
     res.status(200).json({
       message: "Products fetched successfully",
       products,
